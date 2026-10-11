@@ -3,42 +3,64 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b1120" />
-    <title>Dropbox on my MicroSD</title>
+    <meta name="theme-color" content="#f6f1e8" />
+    <title>microSD / Drop space</title>
     <link rel="stylesheet" href="/styles.css" />
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
   </head>
   <body>
-    <main class="shell">
-      <section class="hero">
-        <p class="eyebrow">PRIVATE DROP SPACE</p>
-        <h1>Drop files<br />straight onto the card.</h1>
-        <p class="intro">A simple, private upload space backed by a connected microSD card.</p>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="microSD drop space home">
+          <span class="brand-mark">M</span><span>microSD / DROP SPACE</span>
+        </a>
+        <p class="status"><i></i>CARD ONLINE</p>
+      </header>
+
+      <section class="screen-grid">
+        <section class="hero" aria-labelledby="page-title">
+          <p class="eyebrow">YOUR PERSONAL CLOUD, PHYSICALLY YOURS</p>
+          <h1 id="page-title">A calm place<br />for every file.</h1>
+          <p class="intro">Private storage, powered by the little card on your desk. No noisy dashboard. No mystery cloud.</p>
+          <p class="micro-note"><i></i>FILES STAY ON YOUR MICROSD</p>
+        </section>
+
+        <section class="access-panel" id="login-panel">
+          <div class="panel-kicker"><i></i>SECURE ACCESS</div>
+          <h2>Unlock your drop space.</h2>
+          <p class="panel-copy">Enter the password to open the card and send files straight to it.</p>
+          <form id="login-form">
+            <label for="password">ACCESS PASSWORD</label>
+            <input id="password" type="password" autocomplete="current-password" required placeholder="Enter your password" />
+            <button type="submit">UNLOCK DRIVE</button>
+            <p class="notice" id="login-message" role="alert"></p>
+          </form>
+          <p class="privacy-note">Your password is checked only on this Mac.</p>
+        </section>
+
+        <section class="access-panel hidden" id="app-panel">
+          <div class="app-topline">
+            <p class="panel-kicker"><i></i>YOUR DROP SPACE</p>
+            <button class="text-button" id="logout" type="button">SIGN OUT</button>
+          </div>
+          <h2>Send it to the card.</h2>
+          <form id="upload-form">
+            <label class="drop-zone" id="drop-zone" for="files">
+              <input id="files" name="files" type="file" multiple />
+              <span class="upload-icon">↑</span>
+              <strong>Drop files here</strong>
+              <span>or choose files from your device</span>
+              <small>UP TO 10 FILES · 1 GB EACH</small>
+            </label>
+            <button type="submit" id="upload-button">UPLOAD TO CARD</button>
+            <p class="notice" id="upload-message" role="status"></p>
+          </form>
+          <div class="file-heading"><h3>FILES ON THE CARD</h3><button class="text-button" id="refresh" type="button">REFRESH</button></div>
+          <div id="file-list" class="file-list"><p class="muted">Loading files…</p></div>
+        </section>
       </section>
-      <section class="panel" id="login-panel">
-        <div class="panel-header"><span class="dot"></span><span>Sign in to upload</span></div>
-        <form id="login-form">
-          <label for="password">Access password</label>
-          <input id="password" type="password" autocomplete="current-password" required placeholder="Enter password" />
-          <button type="submit">Open drop space <span>→</span></button>
-          <p class="notice" id="login-message" role="alert"></p>
-        </form>
-      </section>
-      <section class="panel hidden" id="app-panel">
-        <div class="panel-header"><span class="dot online"></span><span>Card connected</span><button class="text-button" id="logout" type="button">Sign out</button></div>
-        <form id="upload-form">
-          <label class="drop-zone" id="drop-zone" for="files">
-            <input id="files" name="files" type="file" multiple />
-            <span class="upload-icon">↑</span>
-            <strong>Drop files here</strong>
-            <span>or choose files from your device</span>
-            <small>Up to 10 files at a time · 1 GB each</small>
-          </label>
-          <button type="submit" id="upload-button">Upload selected files</button>
-          <p class="notice" id="upload-message" role="status"></p>
-        </form>
-        <div class="file-heading"><h2>Files on the card</h2><button class="text-button" id="refresh" type="button">Refresh</button></div>
-        <div id="file-list" class="file-list"><p class="muted">Loading files…</p></div>
-      </section>
+
+      <footer class="footer"><span>LOCAL FIRST&nbsp;&nbsp;·&nbsp;&nbsp;128 GB MICROSD</span><span>116 GB FREE</span></footer>
     </main>
     <script src="/app.js"></script>
   </body>
