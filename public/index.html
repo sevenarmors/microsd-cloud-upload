@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1120" />
+    <title>Dropbox on my MicroSD</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">PRIVATE DROP SPACE</p>
+        <h1>Drop files<br />straight onto the card.</h1>
+        <p class="intro">A simple, private upload space backed by a connected microSD card.</p>
+      </section>
+      <section class="panel" id="login-panel">
+        <div class="panel-header"><span class="dot"></span><span>Sign in to upload</span></div>
+        <form id="login-form">
+          <label for="password">Access password</label>
+          <input id="password" type="password" autocomplete="current-password" required placeholder="Enter password" />
+          <button type="submit">Open drop space <span>→</span></button>
+          <p class="notice" id="login-message" role="alert"></p>
+        </form>
+      </section>
+      <section class="panel hidden" id="app-panel">
+        <div class="panel-header"><span class="dot online"></span><span>Card connected</span><button class="text-button" id="logout" type="button">Sign out</button></div>
+        <form id="upload-form">
+          <label class="drop-zone" id="drop-zone" for="files">
+            <input id="files" name="files" type="file" multiple />
+            <span class="upload-icon">↑</span>
+            <strong>Drop files here</strong>
+            <span>or choose files from your device</span>
+            <small>Up to 10 files at a time · 1 GB each</small>
+          </label>
+          <button type="submit" id="upload-button">Upload selected files</button>
+          <p class="notice" id="upload-message" role="status"></p>
+        </form>
+        <div class="file-heading"><h2>Files on the card</h2><button class="text-button" id="refresh" type="button">Refresh</button></div>
+        <div id="file-list" class="file-list"><p class="muted">Loading files…</p></div>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
